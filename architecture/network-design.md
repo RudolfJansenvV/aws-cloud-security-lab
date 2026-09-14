@@ -1,6 +1,6 @@
 # AWS Network Design
 
-**Status:** Planned  
+**Status:** Implemented
 **Primary region:** Africa (Cape Town) — `af-south-1`
 
 ## Overview
@@ -41,6 +41,13 @@ flowchart TB
         PrivateRT --> PrivateB
     end
 ```
+
+## Implemented VPC resource map
+
+![Sanitized AWS VPC resource map showing four subnets across two Availability Zones with separate public and private routing](../docs/evidence/02-vpc-resource-map-redacted.png)
+
+*Figure 1: Implemented VPC architecture in `af-south-1`. Public subnets use a route to the internet gateway, while private subnets have no direct internet route.*
+
 ## Routing design
 
 The public subnets will use a route table containing a default route to the internet gateway.
