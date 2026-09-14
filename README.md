@@ -49,6 +49,7 @@ aws-cloud-security-lab/
 ├── docs/
 │   ├── build/          # Build process and verification
 │   ├── security/       # Security controls and design decisions
+│   ├── troubleshooting/  # Issues, investigation, resolution, and lessons learned
 │   ├── incidents/      # Misconfiguration and investigation write-ups
 │   └── evidence/       # Sanitized screenshots and command output
 ├── policies/           # IAM and resource-policy examples
@@ -87,3 +88,25 @@ CompTIA Security+ certified, with experience in Python, Linux, technical problem
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+
+> **Status:** In progress — Stage 1: Build
+
+## Current progress
+
+- [x] Established the AWS account security baseline
+- [x] Designed and implemented a segmented two-AZ VPC
+- [x] Configured public and private route tables
+- [x] Deployed an encrypted Amazon Linux EC2 instance
+- [x] Removed inbound administrative access
+- [x] Enabled administration through AWS Systems Manager
+- [x] Required and validated IMDSv2
+- [x] Documented an EC2 security-group configuration issue and resolution
+- [ ] Implement secure Amazon S3 storage
+- [ ] Enable and validate audit logging
+
+### Stage 1 documentation
+
+- [Account security baseline](docs/security/account-baseline.md)
+- [Network architecture and implementation](architecture/network-design.md)
+- [Secure EC2 administration](docs/security/ec2-secure-administration.md)
+- [Security group troubleshooting](docs/troubleshooting/ec2-security-group-selection.md)
