@@ -82,4 +82,4 @@ A subnet is considered public when its route table contains a route to an intern
 
 ### Why are we initially avoiding a NAT gateway?
 
-NAT gateways incur ongoing hourly and processing charges, so I am omitting it from this project to keep costs down
+NAT gateways incur ongoing hourly and processing charges, so I am omitting it from this project to keep costs down.
