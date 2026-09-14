@@ -1,0 +1,89 @@
+# AWS Cloud Security Lab
+
+A hands-on cloud security project focused on building, securing, testing, monitoring, and automating a small AWS environment.
+
+This repository documents the complete process—from the initial architecture and secure account setup to deliberate misconfigurations, detection, remediation, and Python-based security checks.
+
+> **Status:** In progress — Stage 1: Build
+
+## Project objectives
+
+- Build a functional AWS environment and understand every component.
+- Apply least privilege, encryption, network segmentation, and secure access.
+- Enable audit logging and security monitoring.
+- Introduce controlled misconfigurations and document their risks.
+- Detect and remediate security issues.
+- Automate repeatable security checks with Python.
+- Rebuild the environment with Terraform as Infrastructure as Code.
+
+## Project stages
+
+| Stage | Focus | Status |
+|---|---|---|
+| 1 | Build the AWS environment | In progress |
+| 2 | Apply security controls | Planned |
+| 3 | Introduce controlled misconfigurations | Planned |
+| 4 | Detect and investigate changes | Planned |
+| 5 | Automate security checks with Python | Planned |
+| 6 | Rebuild with Terraform and finalize documentation | Planned |
+
+## Planned AWS services
+
+- Amazon VPC
+- Public and private subnets
+- Route tables and security groups
+- Amazon EC2
+- Amazon S3
+- AWS Identity and Access Management (IAM)
+- AWS CloudTrail
+- Amazon CloudWatch
+- AWS Key Management Service (KMS)
+
+The design may evolve as security requirements and cost considerations are evaluated.
+
+## Repository structure
+
+```text
+aws-cloud-security-lab/
+├── architecture/       # Architecture diagrams
+├── docs/
+│   ├── build/          # Build process and verification
+│   ├── security/       # Security controls and design decisions
+│   ├── incidents/      # Misconfiguration and investigation write-ups
+│   └── evidence/       # Sanitized screenshots and command output
+├── policies/           # IAM and resource-policy examples
+├── scripts/            # Python security-audit tools
+├── terraform/          # Infrastructure as Code
+├── .gitignore
+├── LICENSE
+└── README.md
+```
+
+Folders will be added as the corresponding project stages begin.
+
+## Documentation approach
+
+Each major implementation will document:
+
+1. The security or operational requirement.
+2. The configuration that was implemented.
+3. How the configuration was validated.
+4. The evidence collected.
+5. Any issue encountered and how it was resolved.
+6. What was learned from the exercise.
+
+## Security notice
+
+This is a controlled learning environment. No credentials, access keys, private keys, account numbers, sensitive billing information, or active resource identifiers will be published. Screenshots and logs will be reviewed and sanitized before being committed.
+
+Deliberately vulnerable configurations will only be used temporarily in an isolated lab environment and will be remediated or removed immediately after testing.
+
+## Author
+
+**Rudolf Jansen van Vuuren**
+
+CompTIA Security+ certified, with experience in Python, Linux, technical problem-solving, and automation. Currently building practical skills in cloud security, security engineering, and DevSecOps.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
