@@ -16,7 +16,7 @@ This repository documents the complete process—from the initial architecture a
 - [x] Enabled administration through AWS Systems Manager
 - [x] Required and validated IMDSv2
 - [x] Documented an EC2 security-group configuration issue and resolution
-- [ ] Implement secure Amazon S3 storage
+- [x] Implement secure Amazon S3 storage
 - [ ] Enable and validate audit logging
 
 ### Stage 1 documentation
@@ -25,6 +25,7 @@ This repository documents the complete process—from the initial architecture a
 - [Network architecture and implementation](architecture/network-design.md)
 - [Secure EC2 administration](docs/security/ec2-secure-administration.md)
 - [Security group troubleshooting](docs/troubleshooting/ec2-security-group-selection.md)
+- [Secure S3 storage and recovery](docs/security/s3-secure-storage.md)
 
 
 ## Project objectives
