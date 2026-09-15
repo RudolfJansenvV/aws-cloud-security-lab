@@ -75,3 +75,56 @@ The delivered CloudTrail logs confirmed:
 
 This correctly classifies downloading as a read operation and uploading or
 deleting as write operations.
+
+## Safe log inspection
+
+Raw CloudTrail logs can contain:
+
+- AWS account IDs
+- IAM identities and session information
+- Source IP addresses
+- Resource ARNs
+- Bucket and object names
+- Request parameters
+
+For this reason, raw log files were downloaded only to a temporary local
+review folder and were not committed to GitHub.
+
+A Python script was used to extract only the event timestamp, event name,
+event source, and read-only classification:
+
+[CloudTrail event summary script](../../scripts/cloudtrail_event_summary.py)
+
+## Evidence
+
+![CloudTrail S3 data-event validation](../evidence/05-cloudtrail-s3-data-events.png)
+
+The evidence shows the three expected S3 data events without exposing account
+IDs, identities, source IP addresses, bucket names, or resource ARNs.
+
+## Troubleshooting
+
+The first inspection script searched only for files ending in `.json.gz` and
+reported no matching events.
+
+A local file-extension check showed that the browser had already decompressed
+the downloaded CloudTrail logs and saved them as `.json` files.
+
+The script was updated to support both:
+
+- Compressed `.json.gz` CloudTrail logs
+- Browser-decompressed `.json` CloudTrail logs
+
+After the correction, the expected `PutObject`, `GetObject`, and
+`DeleteObject` events were found.
+
+## Cost controls
+
+The implementation limits cost by:
+
+- Using one copy of management events
+- Scoping paid S3 data events to one lab bucket
+- Excluding the audit bucket from data-event logging
+- Using SSE-S3 instead of a customer-managed KMS key
+- Not sending logs to CloudWatch Logs during this stage
+- Not enabling CloudTrail Insights
