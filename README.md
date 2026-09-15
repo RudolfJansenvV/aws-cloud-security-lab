@@ -16,7 +16,7 @@ This repository documents the complete process—from the initial architecture a
 - [x] Enabled administration through AWS Systems Manager
 - [x] Required and validated IMDSv2
 - [x] Documented an EC2 security-group configuration issue and resolution
-- [x] Implement secure Amazon S3 storage
+- [x] Implemented secure Amazon S3 storage
 - [x] Enabled and validated audit logging
 
 ### Stage 1 documentation
@@ -84,7 +84,7 @@ aws-cloud-security-lab/
 ├── docs/
 │   ├── build/          # Build process and verification
 │   ├── security/       # Security controls and design decisions
-│   ├── troubleshooting/  # Issues, investigation, resolution, and lessons learned
+│   ├── troubleshooting/# Issues, investigation, resolution, and lessons learned
 │   ├── incidents/      # Misconfiguration and investigation write-ups
 │   └── evidence/       # Sanitized screenshots and command output
 ├── policies/           # IAM and resource-policy examples
