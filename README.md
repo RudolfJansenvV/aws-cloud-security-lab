@@ -4,7 +4,7 @@ A hands-on cloud security project focused on building, securing, testing, monito
 
 This repository documents the complete process—from the initial architecture and secure account setup to deliberate misconfigurations, detection, remediation, and Python-based security checks.
 
-> **Status:** Stage 1 complete — Stage 2: Secure is next
+> **Status:** Stage 2 in progress — Security hardening and least privilege
 
 ## Current progress
 
@@ -17,7 +17,7 @@ This repository documents the complete process—from the initial architecture a
 - [x] Required and validated IMDSv2
 - [x] Documented an EC2 security-group configuration issue and resolution
 - [x] Implement secure Amazon S3 storage
-- [x] Enable and validate audit logging
+- [x] Enabled and validated audit logging
 
 ### Stage 1 documentation
 
@@ -28,6 +28,18 @@ This repository documents the complete process—from the initial architecture a
 - [Secure S3 storage and recovery](docs/security/s3-secure-storage.md)
 - [CloudTrail audit logging and validation](docs/security/cloudtrail-audit-logging.md)
 
+## Stage 2 progress
+
+- [x] Created an MFA-protected security auditor role
+- [x] Validated allowed and denied actions with the IAM Policy Simulator
+- [x] Tested temporary role-based console access
+- [ ] Create a project-scoped operator role
+- [ ] Validate controlled project-management permissions
+- [ ] Reduce routine reliance on bootstrap administrator access
+
+### Stage 2 documentation
+
+- [IAM security auditor role](docs/security/iam-security-auditor-role.md)
 
 ## Project objectives
 
@@ -44,7 +56,7 @@ This repository documents the complete process—from the initial architecture a
 | Stage | Focus | Status |
 |---|---|---|
 | 1 | Build the AWS environment | Complete |
-| 2 | Apply security controls | Next |
+| 2 | Apply security controls | In progress |
 | 3 | Introduce controlled misconfigurations | Planned |
 | 4 | Detect and investigate changes | Planned |
 | 5 | Automate security checks with Python | Planned |
