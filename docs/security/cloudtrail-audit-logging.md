@@ -128,3 +128,15 @@ The implementation limits cost by:
 - Using SSE-S3 instead of a customer-managed KMS key
 - Not sending logs to CloudWatch Logs during this stage
 - Not enabling CloudTrail Insights
+
+## Future improvements
+
+Future stages can add:
+
+- CloudWatch Logs integration
+- Metric filters and security alarms
+- A customer-managed KMS key
+- Restrictive KMS and bucket policies
+- Lifecycle rules for audit-log retention
+- Athena queries for larger investigations
+- Automated detections for suspicious API activity
