@@ -103,6 +103,64 @@
         "s3:DeleteObject"
       ],
       "Resource": "arn:aws:s3:::SECURE_DATA_BUCKET_NAME/*"
+    },
+    {
+      "Sid": "ListCloudTrailConfiguration",
+      "Effect": "Allow",
+      "Action": [
+        "cloudtrail:ListTrails",
+        "cloudtrail:DescribeTrails"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "ViewLabTrailConfiguration",
+      "Effect": "Allow",
+      "Action": [
+        "cloudtrail:GetTrail",
+        "cloudtrail:GetTrailStatus",
+        "cloudtrail:GetEventSelectors",
+        "cloudtrail:GetInsightSelectors",
+        "cloudtrail:ListTags"
+      ],
+      "Resource": "arn:aws:cloudtrail:af-south-1:ACCOUNT_ID:trail/cloud-security-lab-trail"
+    },
+    {
+      "Sid": "ListIAMRolesAndPolicies",
+      "Effect": "Allow",
+      "Action": [
+        "iam:ListRoles",
+        "iam:ListPolicies"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "ViewLabIAMRoles",
+      "Effect": "Allow",
+      "Action": [
+        "iam:GetRole",
+        "iam:GetRolePolicy",
+        "iam:ListAttachedRolePolicies",
+        "iam:ListRolePolicies",
+        "iam:ListRoleTags",
+        "iam:ListInstanceProfilesForRole"
+      ],
+      "Resource": "arn:aws:iam::ACCOUNT_ID:role/cloud-security-lab-*"
+    },
+    {
+      "Sid": "ViewLabIAMPolicies",
+      "Effect": "Allow",
+      "Action": [
+        "iam:GetPolicy",
+        "iam:GetPolicyVersion",
+        "iam:ListPolicyVersions",
+        "iam:ListPolicyTags",
+        "iam:ListEntitiesForPolicy"
+      ],
+      "Resource": [
+        "arn:aws:iam::ACCOUNT_ID:policy/cloud-security-lab-*",
+        "arn:aws:iam::aws:policy/SecurityAudit"
+      ]
     }
   ]
 }
