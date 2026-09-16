@@ -92,9 +92,30 @@ Troubleshooting:
 
 [Operator policy resource ARN troubleshooting](../troubleshooting/operator-policy-resource-arn.md)
 
+### Phase 2 — Session Manager access
+
+Phase 2 has been implemented and validated.
+
+- Allowed `ssm:StartSession` only for instances tagged `Project = AWSCloudSecurityLab`.
+- Allowed use of the default `SSM-SessionManagerRunShell` session document.
+- Allowed the assumed-role identity to open its own session data channel.
+- Restricted resume and termination permissions to sessions belonging to the current identity.
+- Added read-only Session Manager discovery and connection-status permissions.
+- Did not grant `ssm:SendCommand`.
+- Did not grant permission to create or modify Session Manager documents or preferences.
+- Did not grant KMS permissions because session-data KMS encryption is not currently configured.
+
+Live validation confirmed:
+
+1. The tagged instance appeared as an available managed node.
+2. The operator role successfully opened a browser-based session.
+3. The operating-system identity was `ssm-user`.
+4. The Amazon SSM Agent reported `active`.
+5. The session terminated successfully.
+6. The instance was returned to a stopped state.
+
 ### Remaining implementation
 
-- Add project-scoped Session Manager access.
 - Add access to approved objects in the secure-data bucket.
 - Add read-only CloudTrail and relevant IAM visibility.
 - Review console background-read errors individually.
