@@ -16,24 +16,26 @@ Write access was restricted using the project tag:
 ```text
 Project = AWSCloudSecurityLab
 ```
+
 ## Initial symptom
 
-The IAM Policy Simulator returned Denied for ec2:StartInstances, even though the action was included in the operator policy.
+The IAM Policy Simulator returned Denied for `ec2:StartInstances`, even though the action was included in the operator policy.
 
 The result details showed:
 ```text
 Implicit deny due to no matching statements
 ```
+
 The other simulated results behaved correctly:
 
 | Action                              | Result  |
 | ----------------------------------- | ------- |
-| `ec2:DescribeInstances`  | Allowed |
-| `ec2:TerminateInstances`    | Denied  |
+| `ec2:DescribeInstances`             | Allowed |
+| `ec2:TerminateInstances`            | Denied  |
 | `ec2:AuthorizeSecurityGroupIngress` | Denied  |
 
 ## Investigation
-Incorrect managed-policy resource
+### Incorrect simulator resource
 
 The first simulator test used a friendly name after the instance/ portion of the resource ARN.
 
@@ -43,7 +45,7 @@ arn:aws:ec2:REGION:ACCOUNT_ID:instance/i-INSTANCE_ID
 ```
 The simulator resource was corrected to use an instance ID beginning with i-.
 
-Incorrect managed-policy resource
+### Incorrect managed-policy resource
 
 The simulation remained denied after correcting the simulator resource.
 
@@ -65,6 +67,7 @@ The managed policy resource was changed to the correct EC2 instance ARN format:
 ```
 arn:aws:ec2:af-south-1:ACCOUNT_ID:instance/*
 ```
+
 The policy continued to require:
 ```
 "Condition": {
@@ -73,22 +76,24 @@ The policy continued to require:
   }
 }
 ```
+
 The corrected policy version was saved and set as the default version.
 
 The simulator was then configured with:
 
 - The specific lab instance ARN.
-- The ec2:ResourceTag/Project context key.
-- The value AWSCloudSecurityLab.
+- The `ec2:ResourceTag/Project` context key.
+- The value `AWSCloudSecurityLab`.
+
 ## Validation
 
 After the correction, the simulator returned:
 
 | Action                              | Expected | Result  |
 | ----------------------------------- | -------- | ------- |
-| `ec2:DescribeInstances` | Allowed  | Allowed |
-| `ec2:StartInstances`   | Allowed  | Allowed |
-| `ec2:TerminateInstances`   | Denied   | Denied  |
+| `ec2:DescribeInstances`             | Allowed  | Allowed |
+| `ec2:StartInstances`                | Allowed  | Allowed |
+| `ec2:TerminateInstances`            | Denied   | Denied  |
 | `ec2:AuthorizeSecurityGroupIngress` | Denied   | Denied  |
 
 Evidence:
@@ -97,7 +102,7 @@ Evidence:
 
 ## Live role test
 
-The cloud-security-lab-operator-role was assumed through an MFA-authenticated console session.
+The `cloud-security-lab-operator-role` was assumed through an MFA-authenticated console session.
 
 Using the operator role:
 
