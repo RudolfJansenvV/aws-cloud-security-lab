@@ -21,9 +21,9 @@ Project = AWSCloudSecurityLab
 The IAM Policy Simulator returned Denied for ec2:StartInstances, even though the action was included in the operator policy.
 
 The result details showed:
-
+```text
 Implicit deny due to no matching statements
-
+```
 The other simulated results behaved correctly:
 
 | Action                              | Result  |
@@ -32,8 +32,8 @@ The other simulated results behaved correctly:
 | `ec2:TerminateInstances`    | Denied  |
 | `ec2:AuthorizeSecurityGroupIngress` | Denied  |
 
-##Investigation
-Incorrect simulator resource
+## Investigation
+Incorrect managed-policy resource
 
 The first simulator test used a friendly name after the instance/ portion of the resource ARN.
 
@@ -77,9 +77,9 @@ The corrected policy version was saved and set as the default version.
 
 The simulator was then configured with:
 
-The specific lab instance ARN.
-The ec2:ResourceTag/Project context key.
-The value AWSCloudSecurityLab.
+- The specific lab instance ARN.
+- The ec2:ResourceTag/Project context key.
+- The value AWSCloudSecurityLab.
 ## Validation
 
 After the correction, the simulator returned:
@@ -93,7 +93,7 @@ After the correction, the simulator returned:
 
 Evidence:
 
-Operator policy simulation
+[Operator policy simulation](../evidence/07-project-operator-policy-simulation.png)
 
 ## Live role test
 
@@ -101,10 +101,10 @@ The cloud-security-lab-operator-role was assumed through an MFA-authenticated co
 
 Using the operator role:
 
-The tagged lab instance was visible.
-The stopped instance was started successfully.
-The running instance was stopped successfully.
-The session was switched back to the bootstrap administrator identity.
+1. The tagged lab instance was visible.
+2. The stopped instance was started successfully.
+3. The running instance was stopped successfully.
+4. The session was switched back to the bootstrap administrator identity.
 
 This confirmed that AWS evaluated the real instance tag successfully outside the simulator.
 
@@ -117,6 +117,7 @@ These occurred because the console performs additional background read requests 
 Instead of granting broad EC2 access, the missing read actions will be reviewed individually and added only if they provide a necessary operational benefit.
 
 ## Lessons learned
+
 - An action, resource, and condition must all match before an allow statement applies.
 - A valid-looking ARN can still identify the wrong AWS service or resource type.
 - EC2 instance ARNs use instance IDs rather than friendly names.
