@@ -114,9 +114,34 @@ Live validation confirmed:
 5. The session terminated successfully.
 6. The instance was returned to a stopped state.
 
+### Phase 3 — Secure-data S3 access
+
+Phase 3 has been implemented and validated.
+
+- Allowed console discovery of S3 buckets without granting access to their contents.
+- Allowed listing and viewing security settings for the approved secure-data bucket.
+- Allowed reading, uploading, and deleting approved test objects.
+- Allowed access to existing object versions for recovery and validation.
+- Did not grant `s3:DeleteObjectVersion`, preventing permanent deletion of versioned objects.
+- Did not grant permission to modify bucket policies, public-access controls, encryption, or versioning.
+- Did not grant access to objects stored in the CloudTrail audit bucket.
+
+Live validation confirmed:
+
+1. The operator could open the secure-data bucket and view its existing objects.
+2. A harmless validation file could be uploaded and downloaded successfully.
+3. A normal deletion created a recoverable delete marker.
+4. Permanent deletion of the original object version was denied.
+5. The CloudTrail bucket remained visible for console navigation, but its objects could not be listed.
+6. Policy Simulator allowed `ListBucket` and `GetBucketPublicAccessBlock`.
+7. Policy Simulator denied `PutBucketPolicy`, `PutBucketPublicAccessBlock`, `DeleteBucketPolicy`, and `DeleteBucket`.
+
+Evidence:
+
+[Operator S3 least-privilege simulation](../evidence/08-operator-s3-least-privilege.png)
+
 ### Remaining implementation
 
-- Add access to approved objects in the secure-data bucket.
 - Add read-only CloudTrail and relevant IAM visibility.
 - Review console background-read errors individually.
 - Reduce routine reliance on bootstrap administrator access after validation is complete.
