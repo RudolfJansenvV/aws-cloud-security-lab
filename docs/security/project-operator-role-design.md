@@ -71,4 +71,31 @@ Expected tests include:
 
 ## Implementation status
 
-Design completed. The custom IAM policy and operator role have not yet been created.
+### Phase 1 — EC2 operations
+
+Phase 1 has been implemented and validated.
+
+- Created the `cloud-security-lab-operator-role`.
+- Required MFA in the role trust policy.
+- Attached only the customer-managed `cloud-security-lab-operator-policy`.
+- Allowed EC2 and network visibility.
+- Restricted start, stop, and reboot operations using the `Project = AWSCloudSecurityLab` resource tag.
+- Confirmed that instance termination and security-group modification remain denied.
+- Validated the policy using both the IAM Policy Simulator and a live role session.
+- Retained the bootstrap administrator identity as a temporary recovery path.
+
+Evidence:
+
+[Operator policy simulation](../evidence/07-project-operator-policy-simulation.png)
+
+Troubleshooting:
+
+[Operator policy resource ARN troubleshooting](../troubleshooting/operator-policy-resource-arn.md)
+
+### Remaining implementation
+
+- Add project-scoped Session Manager access.
+- Add access to approved objects in the secure-data bucket.
+- Add read-only CloudTrail and relevant IAM visibility.
+- Review console background-read errors individually.
+- Reduce routine reliance on bootstrap administrator access after validation is complete.
