@@ -21,3 +21,5 @@ This directory contains sanitized screenshots and outputs collected while buildi
 | [06-iam-security-auditor-simulation.png](06-iam-security-auditor-simulation.png) | Read-only auditor access with administrative actions denied |
 | [07-project-operator-policy-simulation.png](07-project-operator-policy-simulation.png) | Tag-restricted EC2 operation with termination and security-group modification denied |
 | [08-operator-s3-least-privilege.png](08-operator-s3-least-privilege.png) | Approved S3 visibility with bucket-policy, public-access, and deletion controls denied |
+| [09-operator-cloudtrail-least-privilege.png](09-operator-cloudtrail-least-privilege.png) | Read-only CloudTrail configuration access with trail modification and logging interruption denied |
+| [10-operator-iam-least-privilege.png](10-operator-iam-least-privilege.png) | Project IAM visibility with policy attachment, trust-policy modification, and role passing denied |
