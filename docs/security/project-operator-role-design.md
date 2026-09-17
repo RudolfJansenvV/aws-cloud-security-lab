@@ -184,7 +184,8 @@ Evidence:
 
 [Operator IAM least-privilege simulation](../evidence/10-operator-iam-least-privilege.png)
 
-### Remaining implementation
+### Ongoing least-privilege review
 
-- Review console background-read errors individually.
-- Reduce routine reliance on bootstrap administrator access after validation is complete.
+- Review unexpected console background-read errors individually before adding permissions.
+- Use the bootstrap administrator only for privileged configuration and recovery tasks.
+- Revalidate the operator policy after future permission changes.
