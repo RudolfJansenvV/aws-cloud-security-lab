@@ -4,7 +4,7 @@ A hands-on cloud security project focused on building, securing, testing, monito
 
 This repository documents the complete process—from the initial architecture and secure account setup to deliberate misconfigurations, detection, remediation, and Python-based security checks.
 
-> **Status:** Stage 2 in progress — Security hardening and least privilege
+> **Status:** Stage 2 complete — Least-privilege IAM roles implemented and validated
 
 ## Current progress
 
@@ -31,15 +31,24 @@ This repository documents the complete process—from the initial architecture a
 ## Stage 2 progress
 
 - [x] Created an MFA-protected security auditor role
-- [x] Validated allowed and denied actions with the IAM Policy Simulator
-- [x] Tested temporary role-based console access
-- [ ] Create a project-scoped operator role
-- [ ] Validate controlled project-management permissions
-- [ ] Reduce routine reliance on bootstrap administrator access
+- [x] Validated auditor permissions using the IAM Policy Simulator and temporary console access
+- [x] Created an MFA-protected project operator role
+- [x] Restricted EC2 operations using project resource tags
+- [x] Enabled controlled Session Manager access without SSH
+- [x] Scoped S3 object operations to the approved secure-data bucket
+- [x] Protected object versions and the CloudTrail audit bucket from the operator
+- [x] Allowed read-only CloudTrail configuration visibility while denying logging changes
+- [x] Allowed project IAM visibility while denying user enumeration and privilege escalation
+- [x] Validated the operator policy through simulation and live role sessions
+- [x] Reserved bootstrap administrator access for privileged configuration and recovery
 
 ### Stage 2 documentation
 
 - [IAM security auditor role](docs/security/iam-security-auditor-role.md)
+- [Project operator role design and validation](docs/security/project-operator-role-design.md)
+- [Project operator IAM policy](policies/project-operator-policy.json)
+- [Operator policy resource ARN troubleshooting](docs/troubleshooting/operator-policy-resource-arn.md)
+- [Sanitized portfolio evidence](docs/evidence/README.md)
 
 ## Project objectives
 
@@ -56,7 +65,7 @@ This repository documents the complete process—from the initial architecture a
 | Stage | Focus | Status |
 |---|---|---|
 | 1 | Build the AWS environment | Complete |
-| 2 | Apply security controls | In progress |
+| 2 | Apply security controls | Complete |
 | 3 | Introduce controlled misconfigurations | Planned |
 | 4 | Detect and investigate changes | Planned |
 | 5 | Automate security checks with Python | Planned |
