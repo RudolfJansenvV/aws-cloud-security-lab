@@ -140,8 +140,51 @@ Evidence:
 
 [Operator S3 least-privilege simulation](../evidence/08-operator-s3-least-privilege.png)
 
+### Phase 4 — CloudTrail and IAM visibility
+
+Phase 4 has been implemented and validated.
+
+#### CloudTrail visibility
+
+- Allowed discovery of trails in the AWS account.
+- Allowed read-only access to the lab trail configuration, logging status, event selectors, Insights selectors, and tags.
+- Did not grant `cloudtrail:LookupEvents`, preventing general access to account event history.
+- Did not grant permission to stop logging, update the trail, or change event selectors.
+
+Live validation confirmed:
+
+1. The operator could view the trail list.
+2. The lab trail configuration opened successfully.
+3. Logging status and event selectors were visible.
+4. CloudTrail Event history returned `AccessDeniedException`.
+5. The CloudTrail audit bucket remained inaccessible.
+6. Policy Simulator denied `StopLogging` and `UpdateTrail`.
+
+Evidence:
+
+[Operator CloudTrail least-privilege simulation](../evidence/09-operator-cloudtrail-least-privilege.png)
+
+#### IAM visibility
+
+- Allowed discovery of IAM roles and managed policies.
+- Restricted detailed role access to resources using the `cloud-security-lab-` naming prefix.
+- Restricted detailed customer-managed policy access to the same project prefix.
+- Allowed visibility of the AWS-managed `SecurityAudit` policy used by the auditor role.
+- Did not grant user enumeration, policy attachment, trust-policy modification, or `iam:PassRole`.
+
+Live validation confirmed:
+
+1. The operator could view the IAM role list.
+2. The operator role details, trust relationship, and attached policy were visible.
+3. The operator policy document and default version were visible.
+4. The IAM Users page denied `iam:ListUsers`.
+5. Policy Simulator denied `AttachRolePolicy`, `UpdateAssumeRolePolicy`, and `PassRole`.
+
+Evidence:
+
+[Operator IAM least-privilege simulation](../evidence/10-operator-iam-least-privilege.png)
+
 ### Remaining implementation
 
-- Add read-only CloudTrail and relevant IAM visibility.
 - Review console background-read errors individually.
 - Reduce routine reliance on bootstrap administrator access after validation is complete.
