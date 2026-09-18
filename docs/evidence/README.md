@@ -29,3 +29,8 @@ This directory contains sanitized screenshots and outputs collected while buildi
 | [14-inbound-rules-remediated.png](14-inbound-rules-remediated.png) | Restored zero-rule security-group baseline after remediation |
 | [15-cloudtrail-authorize-security-group-ingress.png](15-cloudtrail-authorize-security-group-ingress.png) | CloudTrail authorization event recording creation of the insecure rule |
 | [16-cloudtrail-revoke-security-group-ingress.png](16-cloudtrail-revoke-security-group-ingress.png) | CloudTrail revocation event confirming removal of the insecure rule |
+| [17-s3-tls-policy-secure-baseline.png](17-s3-tls-policy-secure-baseline.png) | Secure S3 baseline with explicit denial of requests that do not use TLS |
+| [18-s3-tls-policy-misconfiguration.png](18-s3-tls-policy-misconfiguration.png) | Temporary absence of the bucket policy while Block Public Access remained enabled |
+| [19-s3-tls-policy-remediated.png](19-s3-tls-policy-remediated.png) | Restored `DenyInsecureTransport` bucket-policy control |
+| [20-cloudtrail-delete-bucket-policy.png](20-cloudtrail-delete-bucket-policy.png) | CloudTrail event recording removal of the S3 bucket policy |
+| [21-cloudtrail-put-bucket-policy.png](21-cloudtrail-put-bucket-policy.png) | CloudTrail event confirming restoration of the S3 bucket policy |
