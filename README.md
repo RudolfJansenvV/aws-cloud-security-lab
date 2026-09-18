@@ -4,7 +4,7 @@ A hands-on cloud security project focused on building, securing, testing, monito
 
 This repository documents the complete process—from the initial architecture and secure account setup to deliberate misconfigurations, detection, remediation, and Python-based security checks.
 
-> **Status:** Stage 2 complete — Least-privilege IAM roles implemented and validated
+> **Status:** Stage 3 in progress — Controlled misconfiguration, detection, and remediation
 
 ## Current progress
 
@@ -50,6 +50,22 @@ This repository documents the complete process—from the initial architecture a
 - [Operator policy resource ARN troubleshooting](docs/troubleshooting/operator-policy-resource-arn.md)
 - [Sanitized portfolio evidence](docs/evidence/README.md)
 
+## Stage 3 progress
+
+- [x] Established and documented a secure security-group baseline
+- [x] Introduced a controlled public SSH rule on TCP port 22
+- [x] Kept the EC2 instance stopped with no key pair during testing
+- [x] Detected the insecure `0.0.0.0/0` source configuration
+- [x] Removed the insecure rule and restored the zero-rule baseline
+- [x] Investigated the authorization and revocation events in CloudTrail
+- [x] Preserved sanitized before, during, and after evidence
+- [ ] Complete additional controlled misconfiguration exercises
+
+### Stage 3 documentation
+
+- [Public SSH security-group exposure incident](docs/incidents/01-public-ssh-exposure.md)
+- [Sanitized portfolio evidence](docs/evidence/README.md)
+
 ## Project objectives
 
 - Build a functional AWS environment and understand every component.
@@ -66,7 +82,7 @@ This repository documents the complete process—from the initial architecture a
 |---|---|---|
 | 1 | Build the AWS environment | Complete |
 | 2 | Apply security controls | Complete |
-| 3 | Introduce controlled misconfigurations | Planned |
+| 3 | Introduce controlled misconfigurations | In progress |
 | 4 | Detect and investigate changes | Planned |
 | 5 | Automate security checks with Python | Planned |
 | 6 | Rebuild with Terraform and finalize documentation | Planned |
