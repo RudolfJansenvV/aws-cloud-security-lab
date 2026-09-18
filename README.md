@@ -4,7 +4,7 @@ A hands-on cloud security project focused on building, securing, testing, monito
 
 This repository documents the complete process—from the initial architecture and secure account setup to deliberate misconfigurations, detection, remediation, and Python-based security checks.
 
-> **Status:** Stage 3 in progress — Controlled misconfiguration, detection, and remediation
+> **Status:** Stage 3 complete — Controlled misconfigurations detected, investigated, and remediated
 
 ## Current progress
 
@@ -63,13 +63,16 @@ This repository documents the complete process—from the initial architecture a
 - [x] Kept all S3 Block Public Access controls enabled during the exercise
 - [x] Restored and validated the original `DenyInsecureTransport` policy
 - [x] Investigated `DeleteBucketPolicy` and `PutBucketPolicy` in CloudTrail
-- [ ] Complete additional controlled misconfiguration exercises
+- [x] Temporarily enabled IMDSv1 compatibility by making IMDSv2 optional
+- [x] Restored IMDSv2 enforcement and validated both changes in CloudTrail
+- [x] Completed controlled exercises across network, storage, and compute security
 
 ### Stage 3 documentation
 
 - [Public SSH security-group exposure incident](docs/incidents/01-public-ssh-exposure.md)
 - [Sanitized portfolio evidence](docs/evidence/README.md)
 - [Missing S3 TLS-enforcement incident](docs/incidents/02-missing-s3-tls-enforcement.md)
+- [IMDSv2 enforcement regression incident](docs/incidents/03-imdsv2-enforcement-regression.md)
 
 ## Project objectives
 
@@ -87,7 +90,7 @@ This repository documents the complete process—from the initial architecture a
 |---|---|---|
 | 1 | Build the AWS environment | Complete |
 | 2 | Apply security controls | Complete |
-| 3 | Introduce controlled misconfigurations | In progress |
+| 3 | Introduce controlled misconfigurations | Complete |
 | 4 | Detect and investigate changes | Planned |
 | 5 | Automate security checks with Python | Planned |
 | 6 | Rebuild with Terraform and finalize documentation | Planned |
