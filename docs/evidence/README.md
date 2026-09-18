@@ -34,3 +34,7 @@ This directory contains sanitized screenshots and outputs collected while buildi
 | [19-s3-tls-policy-remediated.png](19-s3-tls-policy-remediated.png) | Restored `DenyInsecureTransport` bucket-policy control |
 | [20-cloudtrail-delete-bucket-policy.png](20-cloudtrail-delete-bucket-policy.png) | CloudTrail event recording removal of the S3 bucket policy |
 | [21-cloudtrail-put-bucket-policy.png](21-cloudtrail-put-bucket-policy.png) | CloudTrail event confirming restoration of the S3 bucket policy |
+| [22-imdsv2-required-baseline.png](22-imdsv2-required-baseline.png) | Secure EC2 metadata baseline with IMDSv2 required |
+| [23-imdsv2-optional-misconfiguration.png](23-imdsv2-optional-misconfiguration.png) | Temporary metadata regression allowing tokenless IMDSv1 requests |
+| [24-imdsv2-required-remediated.png](24-imdsv2-required-remediated.png) | Restored IMDSv2-required configuration with the metadata service enabled |
+| [25-cloudtrail-modify-instance-metadata-options.png](25-cloudtrail-modify-instance-metadata-options.png) | CloudTrail events recording the IMDSv2 regression and remediation |
