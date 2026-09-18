@@ -124,11 +124,12 @@ The exercise therefore demonstrated a configuration-level security weakness with
 - Remediation must be validated by inspecting both the restored configuration and its audit event.
 
 ## Evidence
-- [Secure TLS-enforcement baseline](docs/evidence/17-s3-tls-policy-secure-baseline.png)
-- [Missing bucket-policy misconfiguration](docs/evidence/18-s3-tls-policy-misconfiguration.png)
-- [Restored TLS-enforcement policy](docs/evidence/19-s3-tls-policy-remediated.png)
-- [`DeleteBucketPolicy` CloudTrail event](docs/evidence/20-cloudtrail-delete-bucket-policy.png)
-- [`PutBucketPolicy` CloudTrail event](docs/evidence/21-cloudtrail-put-bucket-policy.png)
+
+- [Secure TLS-enforcement baseline](../evidence/17-s3-tls-policy-secure-baseline.png)
+- [Missing bucket-policy misconfiguration](../evidence/18-s3-tls-policy-misconfiguration.png)
+- [Restored TLS-enforcement policy](../evidence/19-s3-tls-policy-remediated.png)
+- [`DeleteBucketPolicy` CloudTrail event](../evidence/20-cloudtrail-delete-bucket-policy.png)
+- [`PutBucketPolicy` CloudTrail event](../evidence/21-cloudtrail-put-bucket-policy.png)
 
 ## Evidence checklist
 - [x] Secure TLS-enforcement baseline
