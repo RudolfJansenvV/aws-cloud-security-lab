@@ -59,12 +59,17 @@ This repository documents the complete process—from the initial architecture a
 - [x] Removed the insecure rule and restored the zero-rule baseline
 - [x] Investigated the authorization and revocation events in CloudTrail
 - [x] Preserved sanitized before, during, and after evidence
+- [x] Temporarily removed the secure-data bucket’s TLS-enforcement policy
+- [x] Kept all S3 Block Public Access controls enabled during the exercise
+- [x] Restored and validated the original `DenyInsecureTransport` policy
+- [x] Investigated `DeleteBucketPolicy` and `PutBucketPolicy` in CloudTrail
 - [ ] Complete additional controlled misconfiguration exercises
 
 ### Stage 3 documentation
 
 - [Public SSH security-group exposure incident](docs/incidents/01-public-ssh-exposure.md)
 - [Sanitized portfolio evidence](docs/evidence/README.md)
+- [Missing S3 TLS-enforcement incident](docs/incidents/02-missing-s3-tls-enforcement.md)
 
 ## Project objectives
 
