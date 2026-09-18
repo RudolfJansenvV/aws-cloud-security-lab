@@ -23,3 +23,9 @@ This directory contains sanitized screenshots and outputs collected while buildi
 | [08-operator-s3-least-privilege.png](08-operator-s3-least-privilege.png) | Approved S3 visibility with bucket-policy, public-access, and deletion controls denied |
 | [09-operator-cloudtrail-least-privilege.png](09-operator-cloudtrail-least-privilege.png) | Read-only CloudTrail configuration access with trail modification and logging interruption denied |
 | [10-operator-iam-least-privilege.png](10-operator-iam-least-privilege.png) | Project IAM visibility with policy attachment, trust-policy modification, and role passing denied |
+| [11-ec2-stopped-no-key-pair.png](11-ec2-stopped-no-key-pair.png) | Stopped EC2 instance and absence of a key pair during the controlled test |
+| [12-inbound-rules-secure-baseline.png](12-inbound-rules-secure-baseline.png) | Zero-rule security-group baseline before the controlled change |
+| [13-public-ssh-misconfiguration.png](13-public-ssh-misconfiguration.png) | Temporary insecure SSH exposure on TCP port 22 from `0.0.0.0/0` |
+| [14-inbound-rules-remediated.png](14-inbound-rules-remediated.png) | Restored zero-rule security-group baseline after remediation |
+| [15-cloudtrail-authorize-security-group-ingress.png](15-cloudtrail-authorize-security-group-ingress.png) | CloudTrail authorization event recording creation of the insecure rule |
+| [16-cloudtrail-revoke-security-group-ingress.png](16-cloudtrail-revoke-security-group-ingress.png) | CloudTrail revocation event confirming removal of the insecure rule |
