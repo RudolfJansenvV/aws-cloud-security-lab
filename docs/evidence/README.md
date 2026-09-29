@@ -38,3 +38,4 @@ This directory contains sanitized screenshots and outputs collected while buildi
 | [23-imdsv2-optional-misconfiguration.png](23-imdsv2-optional-misconfiguration.png) | Temporary metadata regression allowing tokenless IMDSv1 requests |
 | [24-imdsv2-required-remediated.png](24-imdsv2-required-remediated.png) | Restored IMDSv2-required configuration with the metadata service enabled |
 | [25-cloudtrail-modify-instance-metadata-options.png](25-cloudtrail-modify-instance-metadata-options.png) | CloudTrail events recording the IMDSv2 regression and remediation |
+| [26-cloudtrail-security-change-detector.png](26-cloudtrail-security-change-detector.png) | Privacy-aware Python detection of six security changes across EC2, S3, and instance metadata |
