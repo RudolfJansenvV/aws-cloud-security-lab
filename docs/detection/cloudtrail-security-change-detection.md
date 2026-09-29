@@ -35,7 +35,8 @@ Raw CloudTrail files are stored locally under:
 cloudtrail-logs/
 ```
 
-This directory is excluded through .gitignore because raw logs can contain:
+This directory is excluded through `.gitignore` because raw logs can contain:
+
 - AWS account IDs
 - IAM usernames
 - Resource identifiers
@@ -43,16 +44,19 @@ This directory is excluded through .gitignore because raw logs can contain:
 - Source IP addresses
 - Session information
 - Request parameters
+
 Only the sanitized detector output is published.
 
 ## Usage
 
 Run the detector from the repository root:
+
 ```powershell
 python .\scripts\detect_security_changes.py
 ```
 
 The detector reports:
+
 - Files successfully read
 - Records processed
 - Unreadable files
@@ -65,7 +69,9 @@ The detector reports:
 - Severity totals
 
 ## Privacy-aware output
+
 The detector deliberately excludes:
+
 - Account IDs
 - Usernames
 - Instance IDs
@@ -75,10 +81,13 @@ The detector deliberately excludes:
 - Event IDs
 - Source IP addresses
 - Access-key and session identifiers
+
 Unreadable-file errors also avoid printing CloudTrail filenames because those filenames can contain an AWS account ID.
 
 ## CloudTrail schema handling
+
 During testing, EC2 metadata-option events used a nested request structure:
+
 ```text
 requestParameters
 └── ModifyInstanceMetadataOptionsRequest
@@ -87,14 +96,18 @@ requestParameters
 
 The original parser expected `httpTokens` directly beneath `requestParameters`, causing the IMDS events to be missed.
 The detector was updated to:
+
 1. Detect the nested request object.
 2. Fall back to the top-level request parameters when necessary.
 3. Match field names case-insensitively.
 4. Support both flattened and nested CloudTrail formats.
+
 This investigation demonstrated that detection logic must account for service-specific and format-specific log structures.
 
 ## Validation results
+
 The detector was tested against the Cape Town CloudTrail logs generated during the three controlled Stage 3 incidents.
+
 |Metric |	Result|
 |---|---|
 |CloudTrail files read |	129|
@@ -107,6 +120,7 @@ The detector was tested against the Cape Town CloudTrail logs generated during t
 
 
 All six expected changes were detected:
+
 1. Public SSH access authorized
 2. Public SSH access revoked
 3. S3 bucket policy deleted
@@ -115,18 +129,23 @@ All six expected changes were detected:
 6. IMDSv2 enforcement restored
 
 ## Interpretation limitations
+
 This script detects security-relevant events; it does not independently validate the current AWS configuration.
 Important limitations include:
+
 - `PutBucketPolicy` proves that a policy changed but does not prove the correct TLS policy was restored.
 - A remediation event should still be validated against the live configuration.
 - The current status labels describe individual events and do not correlate resource state across multiple accounts or resources.
 - Results depend on the completeness of the supplied CloudTrail logs.
 - Legitimate administrative changes may still require review.
 - CloudTrail timestamps are displayed in UTC.
+
 These limitations prevent the detector from claiming that a resource is secure based solely on the presence of a later change event.
 
-##  Evidence
+## Evidence
+
 - [Sanitized detector output](../evidence/26-cloudtrail-security-change-detector.png)
 
 ## Status
+
 Implemented and validated

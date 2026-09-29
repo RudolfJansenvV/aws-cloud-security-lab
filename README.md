@@ -74,6 +74,22 @@ This repository documents the complete process—from the initial architecture a
 - [Missing S3 TLS-enforcement incident](docs/incidents/02-missing-s3-tls-enforcement.md)
 - [IMDSv2 enforcement regression incident](docs/incidents/03-imdsv2-enforcement-regression.md)
 
+## Stage 4 progress
+
+- [x] Protected raw CloudTrail logs from version control
+- [x] Installed and authenticated AWS CLI using temporary browser-based credentials
+- [x] Downloaded and processed CloudTrail JSON gzip records locally
+- [x] Built a privacy-aware Python security-change detector
+- [x] Detected all six events from the three Stage 3 incidents
+- [x] Investigated and resolved a nested CloudTrail schema variation
+- [x] Documented detector scope, validation results, privacy controls, and limitations
+
+### Stage 4 documentation
+
+- [CloudTrail security-change detection](docs/detection/cloudtrail-security-change-detection.md)
+- [CloudTrail security-change detector](scripts/detect_security_changes.py)
+- [Sanitized detector evidence](docs/evidence/26-cloudtrail-security-change-detector.png)
+
 ## Project objectives
 
 - Build a functional AWS environment and understand every component.
@@ -91,7 +107,7 @@ This repository documents the complete process—from the initial architecture a
 | 1 | Build the AWS environment | Complete |
 | 2 | Apply security controls | Complete |
 | 3 | Introduce controlled misconfigurations | Complete |
-| 4 | Detect and investigate changes | Planned |
+| 4 | Detect and investigate changes | Complete |
 | 5 | Automate security checks with Python | Planned |
 | 6 | Rebuild with Terraform and finalize documentation | Planned |
 
