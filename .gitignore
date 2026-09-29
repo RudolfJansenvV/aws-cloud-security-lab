@@ -53,3 +53,6 @@ Thumbs.db
 *.log
 *.tmp
 *.swp
+
+# Local CloudTrail inputs may contain sensitive AWS account data
+cloudtrail-logs/
