@@ -95,6 +95,7 @@ requestParameters
 ```
 
 The original parser expected `httpTokens` directly beneath `requestParameters`, causing the IMDS events to be missed.
+
 The detector was updated to:
 
 1. Detect the nested request object.
@@ -108,15 +109,15 @@ This investigation demonstrated that detection logic must account for service-sp
 
 The detector was tested against the Cape Town CloudTrail logs generated during the three controlled Stage 3 incidents.
 
-|Metric |	Result|
-|---|---|
-|CloudTrail files read |	129|
-|CloudTrail records processed |	1,133|
-|Unreadable files |	0|
-|Security-relevant changes |	6|
-|High-severity events |	3|
-|Review events |	1|
-|Informational events |	2|
+| Metric | Result |
+|---|---:|
+| CloudTrail files read | 129 |
+| CloudTrail records processed | 1,133 |
+| Unreadable files | 0 |
+| Security-relevant changes | 6 |
+| High-severity events | 3 |
+| Review events | 1 |
+| Informational events | 2 |
 
 
 All six expected changes were detected:
@@ -131,6 +132,7 @@ All six expected changes were detected:
 ## Interpretation limitations
 
 This script detects security-relevant events; it does not independently validate the current AWS configuration.
+
 Important limitations include:
 
 - `PutBucketPolicy` proves that a policy changed but does not prove the correct TLS policy was restored.

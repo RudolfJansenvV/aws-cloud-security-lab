@@ -4,7 +4,7 @@ A hands-on cloud security project focused on building, securing, testing, monito
 
 This repository documents the complete process—from the initial architecture and secure account setup to deliberate misconfigurations, detection, remediation, and Python-based security checks.
 
-> **Status:** Stage 3 complete — Controlled misconfigurations detected, investigated, and remediated
+> **Status:** Stage 4 complete — CloudTrail security changes detected and investigated
 
 ## Current progress
 
@@ -132,6 +132,7 @@ aws-cloud-security-lab/
 ├── architecture/       # Architecture diagrams
 ├── docs/
 │   ├── build/          # Build process and verification
+│   ├── detection/      # Detection logic, investigation methods, and validation
 │   ├── security/       # Security controls and design decisions
 │   ├── troubleshooting/# Issues, investigation, resolution, and lessons learned
 │   ├── incidents/      # Misconfiguration and investigation write-ups
