@@ -90,22 +90,27 @@ This repository documents the complete process—from the initial architecture a
 - [CloudTrail security-change detector](scripts/detect_security_changes.py)
 - [Sanitized detector evidence](docs/evidence/26-cloudtrail-security-change-detector.png)
 
-## Stage 5 progress
+### Stage 5 progress
 
 - [x] Added synthetic unit tests for the CloudTrail detector
 - [x] Tested public IPv4 and IPv6 SSH exposure
 - [x] Tested S3 bucket-policy deletion and update detection
 - [x] Tested flattened and nested IMDS metadata schemas
 - [x] Added negative tests for private SSH and unrelated events
-- [ ] Build a live AWS current-state security auditor
+- [x] Built a live AWS current-state security auditor
 - [ ] Produce sanitized console and JSON reports
-- [ ] Add automated tests for current-state checks
-- [ ] Implement meaningful command exit codes
+- [x] Added automated tests for current-state checks
+- [x] Implemented meaningful command exit codes
 
 ### Stage 5 documentation
 
 - [CloudTrail detector unit tests](tests/test_detect_security_changes.py)
-- [Sanitized unit-test evidence](docs/evidence/27-security-detector-unit-tests.png)
+- [Sanitized detector unit-test evidence](docs/evidence/27-security-detector-unit-tests.png)
+- [EC2 security state audit](docs/detection/ec2-security-state-audit.md)
+- [EC2 security state auditor](scripts/audit_aws_security_state.py)
+- [EC2 security state audit tests](tests/test_audit_aws_security_state.py)
+- [Sanitized current-state audit evidence](docs/evidence/28-ec2-current-state-audit.png)
+- [Sanitized current-state audit unit-test evidence](docs/evidence/29-ec2-current-state-audit-unit-tests.png)
 
 ## Project objectives
 
