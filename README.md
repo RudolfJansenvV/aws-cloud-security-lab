@@ -4,7 +4,7 @@ A hands-on cloud security project focused on building, securing, testing, monito
 
 This repository documents the complete process—from the initial architecture and secure account setup to deliberate misconfigurations, detection, remediation, and Python-based security checks.
 
-> **Status:** Stage 4 complete — CloudTrail security changes detected and investigated
+> **Status:** Stage 5 in progress — Automated security checks and testing
 
 ## Current progress
 
@@ -90,6 +90,23 @@ This repository documents the complete process—from the initial architecture a
 - [CloudTrail security-change detector](scripts/detect_security_changes.py)
 - [Sanitized detector evidence](docs/evidence/26-cloudtrail-security-change-detector.png)
 
+## Stage 5 progress
+
+- [x] Added synthetic unit tests for the CloudTrail detector
+- [x] Tested public IPv4 and IPv6 SSH exposure
+- [x] Tested S3 bucket-policy deletion and update detection
+- [x] Tested flattened and nested IMDS metadata schemas
+- [x] Added negative tests for private SSH and unrelated events
+- [ ] Build a live AWS current-state security auditor
+- [ ] Produce sanitized console and JSON reports
+- [ ] Add automated tests for current-state checks
+- [ ] Implement meaningful command exit codes
+
+### Stage 5 documentation
+
+- [CloudTrail detector unit tests](tests/test_detect_security_changes.py)
+- [Sanitized unit-test evidence](docs/evidence/27-security-detector-unit-tests.png)
+
 ## Project objectives
 
 - Build a functional AWS environment and understand every component.
@@ -108,7 +125,7 @@ This repository documents the complete process—from the initial architecture a
 | 2 | Apply security controls | Complete |
 | 3 | Introduce controlled misconfigurations | Complete |
 | 4 | Detect and investigate changes | Complete |
-| 5 | Automate security checks with Python | Planned |
+| 5 | Automate security checks with Python | In progress |
 | 6 | Rebuild with Terraform and finalize documentation | Planned |
 
 ## Planned AWS services
@@ -139,6 +156,7 @@ aws-cloud-security-lab/
 │   └── evidence/       # Sanitized screenshots and command output
 ├── policies/           # IAM and resource-policy examples
 ├── scripts/            # Python security-audit tools
+├── tests/              # Automated tests using sanitized synthetic data
 ├── terraform/          # Infrastructure as Code
 ├── .gitignore
 ├── LICENSE
